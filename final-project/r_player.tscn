@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://rgu3fsc24cxl"]
+
+[ext_resource type="Texture2D" uid="uid://dnvk271gv0rc" path="res://assets/tilemap_packed.png" id="1_rjq8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2q7r"]
+atlas = ExtResource("1_rjq8r")
+region = Rect2(256, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trcvt"]
+atlas = ExtResource("1_rjq8r")
+region = Rect2(272, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30t6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2q7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trcvt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvii0"]
+radius = 4.0
+height = 14.0
+
+[node name="r_player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_30t6i")
+frame = 1
+frame_progress = 0.7583118
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kvii0")

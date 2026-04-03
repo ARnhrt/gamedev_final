@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnwgrok7jmqt6"]
+
+[ext_resource type="Texture2D" uid="uid://dnvk271gv0rc" path="res://assets/tilemap_packed.png" id="1_q7ye1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1us04"]
+atlas = ExtResource("1_q7ye1")
+region = Rect2(256, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmk5n"]
+atlas = ExtResource("1_q7ye1")
+region = Rect2(272, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1p7jj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1us04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmk5n")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yl4kh"]
+
+[node name="g_player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1p7jj")
+animation = &"walk"
+frame_progress = 0.06827686
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_yl4kh")
