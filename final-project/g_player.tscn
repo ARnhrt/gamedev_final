@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnwgrok7jmqt6"]
 
-[ext_resource type="Texture2D" uid="uid://dnvk271gv0rc" path="res://assets/tilemap_packed.png" id="1_q7ye1"]
+[ext_resource type="Texture2D" uid="uid://cvk0yu8m6uak8" path="res://assets/tiles.png" id="1_q7ye1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1us04"]
 atlas = ExtResource("1_q7ye1")
-region = Rect2(256, 80, 16, 16)
+region = Rect2(256, 128, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmk5n"]
 atlas = ExtResource("1_q7ye1")
-region = Rect2(272, 80, 16, 16)
+region = Rect2(272, 128, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1p7jj"]
 animations = [{
@@ -34,9 +34,8 @@ height = 16.0
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1p7jj")
 animation = &"walk"
-frame = 1
-frame_progress = 0.4680903
+frame_progress = 0.7174806
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_q7ye1")
