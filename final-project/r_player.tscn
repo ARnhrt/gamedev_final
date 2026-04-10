@@ -25,16 +25,18 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvii0"]
-radius = 4.0
-height = 14.0
+radius = 18.0
+height = 60.0
 
 [node name="r_player" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_30t6i")
-frame_progress = 0.49556515
+frame = 1
+frame_progress = 0.6467708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(-9, 0)
 shape = SubResource("CapsuleShape2D_kvii0")
