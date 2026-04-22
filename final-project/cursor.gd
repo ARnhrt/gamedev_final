@@ -56,7 +56,7 @@ func try_select_unit() -> void:
 
 	print("No unit on this tile")
 	
-func move_to_tile() -> void:
+func move_to_tile(grid_position) -> void:
 	pass
 	
 func try_move_selected_unit() -> void:
