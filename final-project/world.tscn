@@ -1004,3 +1004,5 @@ limit_right = 960
 limit_bottom = 640
 
 [node name="Cursor" parent="." instance=ExtResource("5_036b0")]
+
+[node name="MoveTiles" type="Node2D" parent="."]
