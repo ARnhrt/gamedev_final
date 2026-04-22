@@ -56,6 +56,9 @@ func try_select_unit() -> void:
 
 	print("No unit on this tile")
 	
+func move_to_tile() -> void:
+	pass
+	
 func try_move_selected_unit() -> void:
 	var selected_unit = world.selected_unit
 
