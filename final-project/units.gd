@@ -25,3 +25,7 @@ func set_selected(selected: bool) -> void:
 		scale = Vector2(1.1, 1.1)
 	else:
 		scale = Vector2(1.0, 1.0)
+		
+func move_to_tile(new_grid_position: Vector2i) -> void:
+	grid_position = new_grid_position
+	snap_to_grid()
