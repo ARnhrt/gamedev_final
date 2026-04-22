@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnwgrok7jmqt6"]
+[gd_scene load_steps=7 format=3 uid="uid://bnwgrok7jmqt6"]
 
+[ext_resource type="Script" uid="uid://cjv2slhsm11kn" path="res://units.gd" id="1_nwvx7"]
 [ext_resource type="Texture2D" uid="uid://cvk0yu8m6uak8" path="res://assets/tiles.png" id="1_q7ye1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1us04"]
@@ -20,7 +21,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_nmk5n")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"idle",
 "speed": 4.0
 }]
 
@@ -29,14 +30,14 @@ radius = 16.0
 height = 62.0
 
 [node name="g_player" type="CharacterBody2D"]
+script = ExtResource("1_nwvx7")
+team = "grey"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1p7jj")
-animation = &"walk"
-frame = 1
-frame_progress = 0.7866506
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 0)

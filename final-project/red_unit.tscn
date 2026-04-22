@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://rgu3fsc24cxl"]
+[gd_scene load_steps=7 format=3 uid="uid://rgu3fsc24cxl"]
 
+[ext_resource type="Script" uid="uid://cjv2slhsm11kn" path="res://units.gd" id="1_36hyj"]
 [ext_resource type="Texture2D" uid="uid://cvk0yu8m6uak8" path="res://assets/tiles.png" id="1_rjq8r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2q7r"]
@@ -20,7 +21,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_trcvt")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 4.0
 }]
 
@@ -29,13 +30,13 @@ radius = 18.0
 height = 60.0
 
 [node name="r_player" type="CharacterBody2D"]
+script = ExtResource("1_36hyj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_30t6i")
-frame = 1
-frame_progress = 0.6467708
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 0)
