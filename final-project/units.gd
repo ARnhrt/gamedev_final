@@ -3,6 +3,7 @@ extends Node2D
 @export var grid_position: Vector2i = Vector2i.ZERO
 @export var move_range = 3
 @export var team: String = "red"
+@export var has_moved: bool = false
 
 @onready var world = get_parent().get_parent()
 @onready var ground = world.get_node("Ground")

@@ -995,6 +995,10 @@ grid_position = Vector2i(4, 5)
 position = Vector2(867, 355)
 grid_position = Vector2i(13, 5)
 
+[node name="r_player" parent="Units" instance=ExtResource("2_aqk2v")]
+position = Vector2(354, 540)
+grid_position = Vector2i(5, 8)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(1.2, 1.01)

@@ -1,13 +1,22 @@
 extends Node2D
 
-var selected_unit = null
-
 @onready var move_tiles = $MoveTiles
 @onready var ground = $Ground
 
 var move_tile_scene = preload("res://movement_tile.tscn")
+var selected_unit = null
+var current_team: String = "red"
+
 
 func select_unit(unit) -> void:
+	if unit.team != current_team:
+		print("Not this team's turn")
+		return
+
+	if unit.has_moved:
+		print("This unit already moved")
+		return
+
 	if selected_unit != null:
 		selected_unit.set_selected(false)
 

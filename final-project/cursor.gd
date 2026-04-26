@@ -71,6 +71,7 @@ func try_move_selected_unit() -> void:
 
 	if world.is_tile_in_range(selected_unit, grid_position):
 		selected_unit.move_to_tile(grid_position)
+		selected_unit.has_moved = true
 		selected_unit.set_selected(false)
 		world.selected_unit = null
 		world.clear_move_tiles()
