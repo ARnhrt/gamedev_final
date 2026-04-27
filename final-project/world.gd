@@ -55,10 +55,9 @@ func select_unit(unit) -> void:
 
 	if not unit.has_moved:
 		show_move_range(unit)
+	else:
+		clear_move_tiles()
 
-	print("Current selected unit: ", selected_unit.name)
-
-	show_move_range(unit)
 	print("Current selected unit: ", selected_unit.name)
 	
 func can_move_to_tile(tile_pos: Vector2i, moving_unit) -> bool:
@@ -110,6 +109,7 @@ func end_turn() -> void:
 		if unit.team == current_team:
 			unit.has_moved = false
 			unit.has_acted = false
+			unit.set_acted_visual(false)
 
 	if current_team == "red":
 		current_team = "grey"
@@ -135,14 +135,18 @@ func try_attack(attacker, target) -> bool:
 	print("Attacked ", target.name, " | HP:", target.health)
 
 	if target.health <= 0:
-		$death_sound.play()
-		target.anim.play("die")
-		await target.anim.animation_finished
-		print(target.name, " defeated")
-		check_win_condition()
-		target.queue_free()
+		handle_unit_death(target)
 
 	return true
+	
+func handle_unit_death(target) -> void:
+	$death_sound.play()
+	target.anim.play("die")
+	await target.anim.animation_finished
+
+	print(target.name, " defeated")
+	check_win_condition()
+	target.queue_free()
 
 func check_win_condition() -> void:
 	var red_exists = false
