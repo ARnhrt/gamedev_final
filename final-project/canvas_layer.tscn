@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5id27r5a7gqx"]
+[gd_scene load_steps=8 format=3 uid="uid://cc1lrquxckn3"]
 
 [ext_resource type="Script" uid="uid://bx4sc6kyldtpy" path="res://hud.gd" id="1_tg4cr"]
 [ext_resource type="Texture2D" uid="uid://2qkhx3u2iesj" path="res://assets/players.png" id="1_v2lfg"]
+[ext_resource type="FontFile" uid="uid://0axaplew1lxn" path="res://assets/fonts/Dark College.otf" id="3_37rai"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tg4cr"]
 atlas = ExtResource("1_v2lfg")
@@ -62,6 +63,7 @@ position = Vector2(892, 577)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_mx0kw")
 
+<<<<<<< HEAD
 [node name="Label" type="Label" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -78,3 +80,23 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
 text = "Player 1"
+=======
+[node name="EndLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.47500002
+anchor_right = 0.5
+anchor_bottom = 0.47500002
+offset_left = -21.5
+offset_top = -26.0
+offset_right = 21.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54901963, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_37rai")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+>>>>>>> 17076cbe2dac2dbc6c8a91300af155e2cc91860c

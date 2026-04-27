@@ -29,6 +29,12 @@ func set_selected(selected: bool) -> void:
 	else:
 		scale = Vector2(1.0, 1.0)
 		
+func set_acted_visual(acted: bool) -> void:
+	if acted:
+		modulate = Color(0.6, 0.6, 0.6)
+	else:
+		modulate = Color(1, 1, 1)
+		
 func move_to_tile(new_grid_position: Vector2i) -> void:
 	anim.play("bamf")
 	await anim.animation_finished

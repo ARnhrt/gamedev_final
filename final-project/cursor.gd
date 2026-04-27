@@ -9,8 +9,11 @@ func _ready() -> void:
 	snap_to_grid()
 
 func _process(delta: float) -> void:
+	if world.game_over:
+		return
 	if Input.is_action_just_pressed("wait") and world.selected_unit != null:
 		world.selected_unit.has_acted = true
+		world.selected_unit.set_acted_visual(true)
 		world.selected_unit.set_selected(false)
 		world.selected_unit = null
 		world.clear_move_tiles()
@@ -73,12 +76,15 @@ func try_move_or_attack() -> void:
 	# Check for attack FIRST
 	for unit in units_node.get_children():
 		if unit != selected_unit and unit.grid_position == grid_position:
-			world.try_attack(selected_unit, unit)
+			var attacked = world.try_attack(selected_unit, unit)
 
-			selected_unit.has_acted = true
-			selected_unit.set_selected(false)
-			world.selected_unit = null
-			world.clear_move_tiles()
+			if attacked:
+				selected_unit.has_acted = true
+				selected_unit.set_acted_visual(true)
+				selected_unit.set_selected(false)
+				world.selected_unit = null
+				world.clear_move_tiles()
+
 			return
 
 	# Otherwise try movement

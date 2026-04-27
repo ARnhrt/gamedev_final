@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dnvk271gv0rc" path="res://assets/tilemap_packed.png" id="3_036b0"]
 [ext_resource type="Texture2D" uid="uid://cvk0yu8m6uak8" path="res://assets/tiles.png" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bojurhv8qko6i" path="res://cursor.tscn" id="5_036b0"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://b5id27r5a7gqx" path="res://canvas_layer.tscn" id="7_pkg7o"]
+=======
+[ext_resource type="PackedScene" uid="uid://cc1lrquxckn3" path="res://canvas_layer.tscn" id="7_pkg7o"]
+>>>>>>> 17076cbe2dac2dbc6c8a91300af155e2cc91860c
 [ext_resource type="AudioStream" uid="uid://3bv0vck408ki" path="res://assets/ouch.wav" id="8_gbfbk"]
 [ext_resource type="AudioStream" uid="uid://ciiwndvt7uva8" path="res://assets/p1.wav" id="9_wse8f"]
 [ext_resource type="AudioStream" uid="uid://ct4wmcdr7mhhi" path="res://assets/p2.wav" id="10_ic0uy"]
