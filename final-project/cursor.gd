@@ -47,7 +47,7 @@ func handle_selection() -> void:
 		if world.selected_unit == null:
 			try_select_unit()
 		else:
-			try_move_selected_unit()
+			try_move_or_attack()
 			
 func try_select_unit() -> void:
 	var units_node = world.get_node("Units")
@@ -62,16 +62,16 @@ func try_select_unit() -> void:
 func move_to_tile(grid_position) -> void:
 	pass
 	
-func try_move_selected_unit() -> void:
+func try_move_or_attack() -> void:
 	var selected_unit = world.selected_unit
 	var units_node = world.get_node("Units")
 
-	# Check if attacking
+	# Check for attack FIRST
 	for unit in units_node.get_children():
 		if unit != selected_unit and unit.grid_position == grid_position:
 			world.try_attack(selected_unit, unit)
 
-			selected_unit.has_moved = true
+			selected_unit.has_acted = true
 			selected_unit.set_selected(false)
 			world.selected_unit = null
 			world.clear_move_tiles()
@@ -81,10 +81,8 @@ func try_move_selected_unit() -> void:
 	if world.is_tile_in_range(selected_unit, grid_position):
 		selected_unit.move_to_tile(grid_position)
 		selected_unit.has_moved = true
-		selected_unit.set_selected(false)
-		world.selected_unit = null
 		world.clear_move_tiles()
-		print("Unit moved to: ", grid_position)
+		print("Unit moved. Now you can attack or wait.")
 	else:
 		print("Invalid move")
 			

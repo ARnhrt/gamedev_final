@@ -84,10 +84,8 @@ func try_attack(attacker, target) -> void:
 
 		if target.health <= 0:
 			print(target.name, " defeated")
-			target.queue_free()
-		if target.health <= 0:
-			target.queue_free()
 			check_win_condition()
+			target.queue_free()
 
 func check_win_condition():
 	var red_exists = false
