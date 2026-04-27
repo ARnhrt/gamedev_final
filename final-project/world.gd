@@ -68,3 +68,38 @@ func end_turn() -> void:
 		current_team = "red"
 
 	print("Current turn: ", current_team)
+	
+func is_adjacent(pos1: Vector2i, pos2: Vector2i) -> bool:
+	var dx = abs(pos1.x - pos2.x)
+	var dy = abs(pos1.y - pos2.y)
+	return dx + dy == 1
+	
+func try_attack(attacker, target) -> void:
+	if attacker.team == target.team:
+		return
+
+	if is_adjacent(attacker.grid_position, target.grid_position):
+		target.health -= 5
+		print("Attacked ", target.name, " | HP:", target.health)
+
+		if target.health <= 0:
+			print(target.name, " defeated")
+			target.queue_free()
+		if target.health <= 0:
+			target.queue_free()
+			check_win_condition()
+
+func check_win_condition():
+	var red_exists = false
+	var grey_exists = false
+
+	for unit in $Units.get_children():
+		if unit.team == "red":
+			red_exists = true
+		elif unit.team == "grey":
+			grey_exists = true
+
+	if not red_exists:
+		print("Grey Wins!")
+	elif not grey_exists:
+		print("Red Wins!")

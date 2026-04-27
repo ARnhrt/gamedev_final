@@ -64,14 +64,20 @@ func move_to_tile(grid_position) -> void:
 	
 func try_move_selected_unit() -> void:
 	var selected_unit = world.selected_unit
-
-	# Don't move onto another unit
 	var units_node = world.get_node("Units")
+
+	# Check if attacking
 	for unit in units_node.get_children():
 		if unit != selected_unit and unit.grid_position == grid_position:
-			print("Tile occupied")
+			world.try_attack(selected_unit, unit)
+
+			selected_unit.has_moved = true
+			selected_unit.set_selected(false)
+			world.selected_unit = null
+			world.clear_move_tiles()
 			return
 
+	# Otherwise try movement
 	if world.is_tile_in_range(selected_unit, grid_position):
 		selected_unit.move_to_tile(grid_position)
 		selected_unit.has_moved = true
@@ -80,5 +86,5 @@ func try_move_selected_unit() -> void:
 		world.clear_move_tiles()
 		print("Unit moved to: ", grid_position)
 	else:
-		print("Tile out of range")
+		print("Invalid move")
 			

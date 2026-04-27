@@ -4,6 +4,7 @@ extends Node2D
 @export var move_range = 3
 @export var team: String = "red"
 @export var has_moved: bool = false
+@export var health: int = 10
 
 @onready var world = get_parent().get_parent()
 @onready var ground = world.get_node("Ground")
