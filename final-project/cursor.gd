@@ -9,6 +9,8 @@ func _ready() -> void:
 	snap_to_grid()
 
 func _process(delta: float) -> void:
+	if world.game_over:
+		return
 	if Input.is_action_just_pressed("wait") and world.selected_unit != null:
 		world.selected_unit.has_acted = true
 		world.selected_unit.set_acted_visual(true)

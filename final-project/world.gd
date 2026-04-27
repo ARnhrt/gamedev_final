@@ -2,10 +2,12 @@ extends Node2D
 
 @onready var move_tiles = $MoveTiles
 @onready var ground = $Ground
+@onready var hud = $HUD
 
 var move_tile_scene = preload("res://movement_tile.tscn")
 var selected_unit = null
 var current_team: String = "red"
+var game_over: bool = false
 
 var blocked_tiles = [
 	Vector2i(5, 3),
@@ -162,9 +164,11 @@ func check_win_condition() -> void:
 			grey_exists = true
 
 	if not red_exists:
-		print("Grey Wins!")
+		game_over = true
+		hud.show_end_screen("grey")
 	elif not grey_exists:
-		print("Red Wins!")
+		game_over = true
+		hud.show_end_screen("red")
 		
 func is_tile_occupied(tile_pos: Vector2i, ignore_unit = null) -> bool:
 	for unit in $Units.get_children():

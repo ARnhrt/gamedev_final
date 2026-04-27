@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnvk271gv0rc" path="res://assets/tilemap_packed.png" id="3_036b0"]
 [ext_resource type="Texture2D" uid="uid://cvk0yu8m6uak8" path="res://assets/tiles.png" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bojurhv8qko6i" path="res://cursor.tscn" id="5_036b0"]
-[ext_resource type="PackedScene" path="res://canvas_layer.tscn" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://cc1lrquxckn3" path="res://canvas_layer.tscn" id="7_pkg7o"]
 [ext_resource type="AudioStream" uid="uid://3bv0vck408ki" path="res://assets/ouch.wav" id="8_gbfbk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwbse"]
