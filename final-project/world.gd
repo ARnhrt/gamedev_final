@@ -7,6 +7,36 @@ var move_tile_scene = preload("res://movement_tile.tscn")
 var selected_unit = null
 var current_team: String = "red"
 
+var blocked_tiles = [
+	Vector2i(5, 3),
+	Vector2i(6, 3),
+	Vector2i(7, 3),
+	Vector2i(8, 3),
+	Vector2i(9, 3),
+
+	Vector2i(5, 4),
+	Vector2i(6, 4),
+	Vector2i(7, 4),
+	Vector2i(8, 4),
+	Vector2i(9, 4),
+
+	Vector2i(5, 5),
+	Vector2i(6, 5),
+	Vector2i(7, 5),
+	Vector2i(8, 5),
+	Vector2i(9, 5),
+
+	Vector2i(6, 8),
+	Vector2i(7, 8),
+	Vector2i(8, 8),
+
+	Vector2i(6, 9),
+	Vector2i(7, 9),
+	Vector2i(8, 9)
+]
+
+func is_blocked_tile(tile_pos: Vector2i) -> bool:
+	return tile_pos in blocked_tiles
 
 func select_unit(unit) -> void:
 	if unit.team != current_team:
@@ -30,6 +60,15 @@ func select_unit(unit) -> void:
 
 	show_move_range(unit)
 	print("Current selected unit: ", selected_unit.name)
+	
+func can_move_to_tile(tile_pos: Vector2i, moving_unit) -> bool:
+	if is_blocked_tile(tile_pos):
+		return false
+	
+	if is_tile_occupied(tile_pos, moving_unit):
+		return false
+	
+	return true
 
 func show_move_range(unit) -> void:
 	clear_move_tiles()
@@ -41,6 +80,10 @@ func show_move_range(unit) -> void:
 		for y in range(-move_range, move_range + 1):
 			if abs(x) + abs(y) <= move_range:
 				var tile_pos = origin + Vector2i(x, y)
+
+				if not can_move_to_tile(tile_pos, unit):
+					continue
+
 				spawn_move_tile(tile_pos)
 
 func spawn_move_tile(tile_pos: Vector2i) -> void:
@@ -118,3 +161,13 @@ func check_win_condition() -> void:
 		print("Grey Wins!")
 	elif not grey_exists:
 		print("Red Wins!")
+		
+func is_tile_occupied(tile_pos: Vector2i, ignore_unit = null) -> bool:
+	for unit in $Units.get_children():
+		if unit == ignore_unit:
+			continue
+			
+		if unit.grid_position == tile_pos:
+			return true
+		
+	return false
