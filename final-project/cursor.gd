@@ -8,9 +8,12 @@ extends Node2D
 func _ready() -> void:
 	snap_to_grid()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	handle_input()
 	handle_selection()
+
+	if Input.is_action_just_pressed("end_turn"):
+		world.end_turn()
 
 func handle_input() -> void:
 	var move := Vector2i.ZERO

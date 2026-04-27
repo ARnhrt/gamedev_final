@@ -50,3 +50,21 @@ func clear_move_tiles() -> void:
 func is_tile_in_range(unit, tile_pos: Vector2i) -> bool:
 	var origin = unit.grid_position
 	return abs(tile_pos.x - origin.x) + abs(tile_pos.y - origin.y) <= unit.move_range
+
+func end_turn() -> void:
+	clear_move_tiles()
+
+	if selected_unit != null:
+		selected_unit.set_selected(false)
+		selected_unit = null
+
+	for unit in $Units.get_children():
+		if unit.team == current_team:
+			unit.has_moved = false
+
+	if current_team == "red":
+		current_team = "grey"
+	else:
+		current_team = "red"
+
+	print("Current turn: ", current_team)
