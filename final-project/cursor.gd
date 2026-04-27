@@ -82,6 +82,10 @@ func try_move_or_attack() -> void:
 			return
 
 	# Otherwise try movement
+	if selected_unit.has_moved:
+		print("This unit already moved. Attack or wait.")
+		return
+
 	if world.is_tile_in_range(selected_unit, grid_position):
 		selected_unit.move_to_tile(grid_position)
 		selected_unit.has_moved = true
