@@ -2,12 +2,10 @@ extends Node2D
 
 @onready var move_tiles = $MoveTiles
 @onready var ground = $Ground
-@onready var hud = $HUD
 
 var move_tile_scene = preload("res://movement_tile.tscn")
 var selected_unit = null
 var current_team: String = "red"
-var game_over: bool = false
 
 var blocked_tiles = [
 	Vector2i(5, 3),
@@ -57,9 +55,10 @@ func select_unit(unit) -> void:
 
 	if not unit.has_moved:
 		show_move_range(unit)
-	else:
-		clear_move_tiles()
 
+	print("Current selected unit: ", selected_unit.name)
+
+	show_move_range(unit)
 	print("Current selected unit: ", selected_unit.name)
 	
 func can_move_to_tile(tile_pos: Vector2i, moving_unit) -> bool:
@@ -111,7 +110,6 @@ func end_turn() -> void:
 		if unit.team == current_team:
 			unit.has_moved = false
 			unit.has_acted = false
-			unit.set_acted_visual(false)
 
 	if current_team == "red":
 		current_team = "grey"
@@ -145,18 +143,14 @@ func try_attack(attacker, target) -> bool:
 	print("Attacked ", target.name, " | HP:", target.health)
 
 	if target.health <= 0:
-		handle_unit_death(target)
+		$death_sound.play()
+		target.anim.play("die")
+		await target.anim.animation_finished
+		print(target.name, " defeated")
+		check_win_condition()
+		target.queue_free()
 
 	return true
-	
-func handle_unit_death(target) -> void:
-	$death_sound.play()
-	target.anim.play("die")
-	await target.anim.animation_finished
-
-	print(target.name, " defeated")
-	check_win_condition()
-	target.queue_free()
 
 func check_win_condition() -> void:
 	var red_exists = false
@@ -172,11 +166,9 @@ func check_win_condition() -> void:
 			grey_exists = true
 
 	if not red_exists:
-		game_over = true
-		hud.show_end_screen("grey")
+		print("Grey Wins!")
 	elif not grey_exists:
-		game_over = true
-		hud.show_end_screen("red")
+		print("Red Wins!")
 		
 func is_tile_occupied(tile_pos: Vector2i, ignore_unit = null) -> bool:
 	for unit in $Units.get_children():
