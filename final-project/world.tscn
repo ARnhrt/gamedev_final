@@ -1002,9 +1002,9 @@ grid_position = Vector2i(5, 8)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-limit_left = 0
+limit_left = -2
 limit_top = 0
-limit_right = 960
+limit_right = 958
 limit_bottom = 640
 
 [node name="Cursor" parent="." instance=ExtResource("5_036b0")]
