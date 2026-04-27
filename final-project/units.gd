@@ -36,4 +36,5 @@ func move_to_tile(new_grid_position: Vector2i) -> void:
 	snap_to_grid()
 	anim.play_backwards("bamf")
 	await anim.animation_finished
+	
 	anim.play("idle")

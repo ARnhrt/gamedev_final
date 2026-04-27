@@ -92,6 +92,8 @@ func try_attack(attacker, target) -> bool:
 	print("Attacked ", target.name, " | HP:", target.health)
 
 	if target.health <= 0:
+		target.anim.play("die")
+		await target.anim.animation_finished
 		print(target.name, " defeated")
 		check_win_condition()
 		target.queue_free()
