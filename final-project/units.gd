@@ -30,6 +30,10 @@ func set_selected(selected: bool) -> void:
 		scale = Vector2(1.0, 1.0)
 		
 func move_to_tile(new_grid_position: Vector2i) -> void:
-	anim.play("walk")
+	anim.play("bamf")
+	await anim.animation_finished
 	grid_position = new_grid_position
 	snap_to_grid()
+	anim.play_backwards("bamf")
+	await anim.animation_finished
+	anim.play("idle")
