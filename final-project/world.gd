@@ -113,8 +113,16 @@ func end_turn() -> void:
 
 	if current_team == "red":
 		current_team = "grey"
+		$p2.play()
+		$HUD/Label.text = "Player 2"
+		$HUD/ColorRect2.show()
+		$HUD/ColorRect1.hide()
 	else:
 		current_team = "red"
+		$p1.play()
+		$HUD/Label.text = "Player 1"
+		$HUD/ColorRect1.show()
+		$HUD/ColorRect2.hide()
 
 	print("Current turn: ", current_team)
 	
