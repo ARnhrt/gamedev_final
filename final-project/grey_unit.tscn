@@ -111,7 +111,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 2.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -148,7 +148,7 @@ team = "grey"
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1p7jj")
-animation = &"bamf"
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c2lwtug2pc8bi"]
+[gd_scene load_steps=14 format=4 uid="uid://c2lwtug2pc8bi"]
 
 [ext_resource type="Script" uid="uid://cc8tamifjluw1" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://bnwgrok7jmqt6" path="res://grey_unit.tscn" id="1_tlwt5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cvk0yu8m6uak8" path="res://assets/tiles.png" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bojurhv8qko6i" path="res://cursor.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://b5id27r5a7gqx" path="res://canvas_layer.tscn" id="7_pkg7o"]
+[ext_resource type="AudioStream" uid="uid://3bv0vck408ki" path="res://assets/ouch.wav" id="8_gbfbk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwbse"]
 texture = ExtResource("3_036b0")
@@ -1013,3 +1014,6 @@ limit_bottom = 640
 [node name="MoveTiles" type="Node2D" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("7_pkg7o")]
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_gbfbk")
