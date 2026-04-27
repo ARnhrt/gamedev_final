@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnwgrok7jmqt6"]
+[gd_scene load_steps=10 format=3 uid="uid://bnwgrok7jmqt6"]
 
 [ext_resource type="Script" uid="uid://cjv2slhsm11kn" path="res://units.gd" id="1_nwvx7"]
 [ext_resource type="Texture2D" uid="uid://cvk0yu8m6uak8" path="res://assets/tiles.png" id="1_q7ye1"]
+[ext_resource type="Texture2D" uid="uid://rlr2vvaum0dj" path="res://assets/armyguys.png" id="3_1agbq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1us04"]
 atlas = ExtResource("1_q7ye1")
@@ -10,6 +11,14 @@ region = Rect2(256, 128, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmk5n"]
 atlas = ExtResource("1_q7ye1")
 region = Rect2(272, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btymf"]
+atlas = ExtResource("3_1agbq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg085"]
+atlas = ExtResource("3_1agbq")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1p7jj"]
 animations = [{
@@ -23,6 +32,17 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btymf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg085")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7ye1"]
@@ -38,6 +58,8 @@ texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1p7jj")
 animation = &"idle"
+frame = 1
+frame_progress = 0.9387047
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 0)
