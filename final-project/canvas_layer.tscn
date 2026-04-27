@@ -36,6 +36,20 @@ animations = [{
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_tg4cr")
 
+[node name="ColorRect1" type="ColorRect" parent="."]
+offset_left = 14.0
+offset_top = 504.0
+offset_right = 129.0
+offset_bottom = 650.0
+color = Color(0.22745098, 0.26666668, 0.4, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 829.0
+offset_top = 504.0
+offset_right = 944.0
+offset_bottom = 650.0
+color = Color(0.9098039, 0.3372549, 0.36862746, 0.90588236)
+
 [node name="PlayerOne" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(72, 577)
@@ -44,6 +58,23 @@ sprite_frames = SubResource("SpriteFrames_37rai")
 
 [node name="PlayerTwo" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(902, 577)
+position = Vector2(887, 577)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_mx0kw")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.5
+offset_top = -66.0
+offset_right = 69.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Player 1"

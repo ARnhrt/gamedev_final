@@ -113,8 +113,16 @@ func end_turn() -> void:
 
 	if current_team == "red":
 		current_team = "grey"
+		$p2.play()
+		$HUD/Label.text = "Player 2"
+		$HUD/ColorRect1.hide()
+		$HUD/ColorRect2.show()
 	else:
 		current_team = "red"
+		$p1.play()
+		$HUD/Label.text = "Player 1"
+		$HUD/ColorRect1.show()
+		$HUD/ColorRect2.hide()
 
 	print("Current turn: ", current_team)
 	
@@ -159,8 +167,14 @@ func check_win_condition() -> void:
 
 	if not red_exists:
 		print("Grey Wins!")
+		$HUD/Label.text = "GREY WINS!!!!"
+		$HUD/ColorRect1.hide()
+		$HUD/PlayerOne.hide()
 	elif not grey_exists:
 		print("Red Wins!")
+		$HUD/Label.text = "RED WINS!!!!"
+		$HUD/ColorRect2.hide()
+		$HUD/PlayerTwo.hide()
 		
 func is_tile_occupied(tile_pos: Vector2i, ignore_unit = null) -> bool:
 	for unit in $Units.get_children():
