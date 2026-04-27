@@ -13,8 +13,8 @@ func select_unit(unit) -> void:
 		print("Not this team's turn")
 		return
 
-	if unit.has_moved:
-		print("This unit already moved")
+	if unit.has_acted:
+		print("This unit already acted")
 		return
 
 	if selected_unit != null:
@@ -22,6 +22,11 @@ func select_unit(unit) -> void:
 
 	selected_unit = unit
 	selected_unit.set_selected(true)
+
+	if not unit.has_moved:
+		show_move_range(unit)
+
+	print("Current selected unit: ", selected_unit.name)
 
 	show_move_range(unit)
 	print("Current selected unit: ", selected_unit.name)
@@ -61,6 +66,7 @@ func end_turn() -> void:
 	for unit in $Units.get_children():
 		if unit.team == current_team:
 			unit.has_moved = false
+			unit.has_acted = false
 
 	if current_team == "red":
 		current_team = "grey"
@@ -74,24 +80,32 @@ func is_adjacent(pos1: Vector2i, pos2: Vector2i) -> bool:
 	var dy = abs(pos1.y - pos2.y)
 	return dx + dy == 1
 	
-func try_attack(attacker, target) -> void:
+func try_attack(attacker, target) -> bool:
 	if attacker.team == target.team:
-		return
+		return false
 
-	if is_adjacent(attacker.grid_position, target.grid_position):
-		target.health -= 5
-		print("Attacked ", target.name, " | HP:", target.health)
+	if not is_adjacent(attacker.grid_position, target.grid_position):
+		print("Target is not adjacent")
+		return false
 
-		if target.health <= 0:
-			print(target.name, " defeated")
-			check_win_condition()
-			target.queue_free()
+	target.health -= 5
+	print("Attacked ", target.name, " | HP:", target.health)
 
-func check_win_condition():
+	if target.health <= 0:
+		print(target.name, " defeated")
+		check_win_condition()
+		target.queue_free()
+
+	return true
+
+func check_win_condition() -> void:
 	var red_exists = false
 	var grey_exists = false
 
 	for unit in $Units.get_children():
+		if unit.health <= 0:
+			continue
+
 		if unit.team == "red":
 			red_exists = true
 		elif unit.team == "grey":

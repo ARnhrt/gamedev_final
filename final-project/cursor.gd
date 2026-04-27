@@ -9,6 +9,12 @@ func _ready() -> void:
 	snap_to_grid()
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("wait") and world.selected_unit != null:
+		world.selected_unit.has_acted = true
+		world.selected_unit.set_selected(false)
+		world.selected_unit = null
+		world.clear_move_tiles()
+		print("Unit waited")
 	handle_input()
 	handle_selection()
 
@@ -59,8 +65,6 @@ func try_select_unit() -> void:
 
 	print("No unit on this tile")
 	
-func move_to_tile(grid_position) -> void:
-	pass
 	
 func try_move_or_attack() -> void:
 	var selected_unit = world.selected_unit
